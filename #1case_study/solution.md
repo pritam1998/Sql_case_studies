@@ -68,7 +68,7 @@ where ranking = 1;
 select customer_id, count(product_name)
 from sales s join menu m
 	on s.product_id = m.product_id
-where product_name = (with cte as (select product_name, count(*) as                                   ordered_quantity, dense_rank()over(order by count(*)                           desc)as ranking
+where product_name = (with cte as (select product_name, count(*) as ordered_quantity, dense_rank()over(order by count(*) desc)as ranking
 	                 from sales s join menu m
 	                 on s.product_id = m.product_id
 	                 group by product_name)
